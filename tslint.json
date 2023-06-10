@@ -1,3 +1,34 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"]
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "interface-name": true,
+    "object-literal-sort-keys": false,
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "member-ordering": [
+      false,
+      {
+        "order": [
+          "public-instance-field",
+          "protected-static-field",
+          "protected-instance-field",
+          "private-static-field",
+          "private-instance-field",
+          "constructor",
+          "public-static-field",
+          "public-static-method",
+          "public-instance-method",
+          "protected-static-method",
+          "protected-instance-method",
+          "private-static-method",
+          "private-instance-method"
+        ]
+      }
+    ]
+  }
 }

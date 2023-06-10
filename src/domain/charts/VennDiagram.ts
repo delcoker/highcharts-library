@@ -1,87 +1,88 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
-import AbstractChart from './AbstractChart';
-import Series from '../models/Series';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class VennDiagram implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     let chartSettings = {};
     this.highchartFormatter.init(chartSettings, chartData);
 
     const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
 
+
     chartSettings =
       {
         accessibility: {
           point: {
-            descriptionFormatter: function(point) {
-              var intersection = point.sets.join(', '),
+            descriptionFormatter(point: any) {
+              const intersection = point.sets.join(", "),
                 name = point.name,
                 ix = point.index + 1,
                 val = point.value;
-              return ix + '. Intersection: ' + intersection + '. ' +
-                (point.sets.length > 1 ? name + '. ' : '') + 'Value ' + val + '.';
+              return ix + ". Intersection: " + intersection + ". " +
+                (point.sets.length > 1 ? name + ". " : "") + "Value " + val + ".";
             },
           },
         },
         series: [{
           type: ChartTypes.VENN_DIAGRAM.type,
-          name: 'The Unattainable Triangle',
+          name: "The Unattainable Triangle",
           data: [{
-            sets: ['Good'],
+            sets: ["Good"],
             value: 2,
           }, {
-            sets: ['Fast'],
+            sets: ["Fast"],
             value: 2,
           }, {
-            sets: ['Cheap'],
+            sets: ["Cheap"],
             value: 2,
           }, {
-            sets: ['Good', 'Fast'],
+            sets: ["Good", "Fast"],
             value: 1,
-            name: 'More expensive',
+            name: "More expensive",
           }, {
-            sets: ['Good', 'Cheap'],
+            sets: ["Good", "Cheap"],
             value: 1,
-            name: 'Will take time to deliver',
+            name: "Will take time to deliver",
           }, {
-            sets: ['Fast', 'Cheap'],
+            sets: ["Fast", "Cheap"],
             value: 1,
-            name: 'Not the best quality',
+            name: "Not the best quality",
           }, {
-            sets: ['Fast', 'Cheap', 'Good'],
+            sets: ["Fast", "Cheap", "Good"],
             value: 1,
-            name: 'They\'re dreaming',
+            name: "They're dreaming",
           }],
         }],
         title: {
-          text: 'The Unattainable Triangle',
+          text: "The Unattainable Triangle",
         },
       };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.VENN_DIAGRAM.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(chartSettings)
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartDataPoint(dataPoint)),
+      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
     };
   }
 }

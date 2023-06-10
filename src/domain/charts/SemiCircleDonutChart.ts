@@ -1,27 +1,29 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import Series from '../models/Series';
-import DataPoint from '../models/DataPoint';
-import AbstractChart from './AbstractChart';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import DataPoint from "../models/DataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class SemiCircleDonutChart implements IChart {
-  chartSettings = {};
+  public chartSettings = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     // let chartSettings = {};
     this.highchartFormatter.init(this.chartSettings, chartData);
 
     const semiCircleDonutSeries = chartData.seriesList
+      // @ts-ignore
       .map(oneSeries => AbstractChart.getCategorySeriesList(oneSeries, chartParameters.selectedCategory))
+      // @ts-ignore
       .map(oneCategorySeries => SemiCircleDonutChart.getHighchartSemiCircleDonutDataPoint(oneCategorySeries));
 
     const series = SemiCircleDonutChart.getSemiCircleDonutSeries(chartParameters, semiCircleDonutSeries);
@@ -38,50 +40,51 @@ export default class SemiCircleDonutChart implements IChart {
       },
       accessibility: {
         point: {
-          valueSuffix: '%',
+          valueSuffix: "%",
         },
       },
       plotOptions: {
         pie: {
           allowPointSelect: true,
-          cursor: 'pointer',
+          cursor: "pointer",
           dataLabels: {
             enabled: true,
             distance: -50,
             style: {
-              fontWeight: 'bold',
-              color: 'white',
+              fontWeight: "bold",
+              color: "white",
             },
           },
           showInLegend: true,
           startAngle: -90,
           endAngle: 90,
-          center: ['50%', '75%'],
-          size: '110%',
+          center: ["50%", "75%"],
+          size: "110%",
         },
       },
       series: [{
         ...series,
         type: ChartTypes.PIE.type,
-        innerSize: '50%',
+        innerSize: "50%",
       }],
     };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.PIE.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(this.chartSettings)
       .build();
   };
 
-  public static getSemiCircleDonutSeries(chartParameters: HighchartRequest, SemiCircleDonutSeries: Array<string | number>[]) {
+  public static getSemiCircleDonutSeries(chartParameters: HighchartsRequest, SemiCircleDonutSeries: Array<Array<string | number>>) {
     return {
       name: chartParameters.selectedCategory,
       data: SemiCircleDonutSeries,
     };
   }
 
-  public static getHighchartSemiCircleDonutDataPoint(seriesList: Array<Series>): Array<(string | number)> {
+  public static getHighchartSemiCircleDonutDataPoint(seriesList: Series[]): Array<(string | number)> {
+    // @ts-ignore
     return [seriesList[0].name, seriesList[0].values[0].y];
   }
 }

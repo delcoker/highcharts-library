@@ -1,12 +1,12 @@
-import Category from './Category';
-import { Builder } from 'builder-pattern';
-import { CategoryTypes } from '../enums/CategoryTypes';
+import { Builder } from "builder-pattern";
+import { CategoryTypes } from "../enums/CategoryTypes";
+import Category from "./Category";
 
 export default class DataPoint {
-  category: Category = Builder<Category>()
+  public category: Category = Builder<Category>()
     .label("2000")
     .value(2000)
     .categoryType(CategoryTypes.DEFAULT)
     .build();
-  y: number = null;
+  public y: number | undefined ;
 }

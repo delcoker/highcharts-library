@@ -1,10 +1,10 @@
-import { logger } from '../../logger';
-
-const log = logger();
+// import { logger } from "../../logger";
+//
+// const log = logger();
 
 export class IllegalArgumentException extends Error {
-  constructor(message) {
+  constructor(message: string | undefined) {
     super(message);
-    log.error(message);
+    // log.error(message);
   }
 }

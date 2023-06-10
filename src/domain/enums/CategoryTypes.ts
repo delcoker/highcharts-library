@@ -1,6 +1,6 @@
 export enum CategoryTypes {
-  'DEFAULT',
-  'OTHER'
+  "DEFAULT",
+  "OTHER"
 }
 
 // let i = 0;

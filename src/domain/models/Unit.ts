@@ -1,11 +1,11 @@
-import UnitTypes from '../enums/UnitTypes';
+import UnitTypes from "../enums/UnitTypes";
 
 export default class Unit {
-  name: string = '';
-  description: string = 'no unit description';
-  axisName: string = '';
-  prefix: string = '';
-  suffix: string = '';
-  decimalPlaces: number = 2;
-  unitType: UnitTypes = UnitTypes.DEFAULT;
+  public name: string = "";
+  public description: string = "no unit description";
+  public axisName: string = "";
+  public prefix: string = "";
+  public suffix: string = "";
+  public decimalPlaces: number = 2;
+  public unitType: UnitTypes = UnitTypes.DEFAULT;
 }

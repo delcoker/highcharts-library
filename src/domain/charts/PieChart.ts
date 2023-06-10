@@ -1,22 +1,22 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import Series from '../models/Series';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import AbstractChart from './AbstractChart';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class PieChart implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     let chartSettings = {};
     this.highchartFormatter.init(chartSettings, chartData);
@@ -40,13 +40,13 @@ export default class PieChart implements IChart {
       },
       accessibility: {
         point: {
-          valueSuffix: '%',
+          valueSuffix: "%",
         },
       },
       plotOptions: {
         pie: {
           allowPointSelect: true,
-          cursor: 'pointer',
+          cursor: "pointer",
           dataLabels: {
             enabled: true,
             format: `<b>{point.name}</b>: {point.percentage:.${chartData.unit.decimalPlaces}f} %`,
@@ -54,24 +54,27 @@ export default class PieChart implements IChart {
           showInLegend: true,
         },
       },
-      series: series,
+      series,
     };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.PIE.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(chartSettings)
       .build();
   };
 
-  private static getPieSeries(chartParameters: HighchartRequest, pieSeries: { name: string; y: number }[]) {
-    return new Array({
-      name: chartParameters.selectedCategory,
-      data: pieSeries,
+  private static getPieSeries(chartParameters: HighchartsRequest, pieSeries: HighchartsDataPoint[]): { name: string; y: number }[] {
+    return pieSeries.map((dataPoint: HighchartsDataPoint) => {
+      return {
+        name: dataPoint.name || '',
+        y: dataPoint.y || 0,
+      };
     });
   }
 
-  private static getHighchartDataPoint(seriesList: Array<Series>): HighchartDataPoint {
+
+  private static getHighchartDataPoint(seriesList: Series[]): HighchartsDataPoint {
     return {
       name: seriesList[0].name,
       x: undefined,

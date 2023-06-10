@@ -1,27 +1,27 @@
-import ChartTypes from '../enums/ChartTypes';
-import Series from './Series';
-import Category from './Category';
-import Unit from './Unit';
-import { COLOUR_CODES } from '../enums/ColorPalette';
+import ChartTypes from "../enums/ChartTypes";
+import { COLOUR_CODES } from "../enums/ColorPalette";
+import Category from "./Category";
+import Series from "./Series";
+import Unit from "./Unit";
 
 // type ChartTypeKey = keyof typeof ChartTypes; // https://stackoverflow.com/questions/43042549/typed-enum-instance-in-typescript
 
 export default class ChartData {
-  id: string = '';
+  public id: string = "";
   // @Transform(({ value }) => ChartTypes.getChartType(value), { toClassOnly: true })
-  defaultChartType: ChartTypes = ChartTypes.COLUMN;
-  seriesList: Array<Series> = new Array<Series>();
-  categories: Map<string, Category> = new Map<string, Category>();
-  defaultCategory: string = '';
-  unit: Unit = new Unit();
-  colours: Array<string> | string[] = COLOUR_CODES;
-  title: string = '';
+  public defaultChartType: ChartTypes = ChartTypes.COLUMN;
+  public seriesList: Series[] = new Array<Series>();
+  public categories: Map<string, Category> = new Map<string, Category>();
+  public defaultCategory: string = "";
+  public unit: Unit = new Unit();
+  public colours: string[] | string[] = COLOUR_CODES;
+  public title: string = "";
 
 
   public isNumericCategories = () => {
     if (this.categories.values) {
       const firstCategory = Array.from(this.categories.values())[0];
-      return typeof firstCategory.value === 'number';
+      return typeof firstCategory.value === "number";
     }
     return false
   };

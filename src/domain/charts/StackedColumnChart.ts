@@ -1,21 +1,21 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
-import AbstractChart from './AbstractChart';
-import Series from '../models/Series';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class StackedColumnChart implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     let chartSettings = {};
     this.highchartFormatter.init(chartSettings, chartData);
@@ -28,7 +28,7 @@ export default class StackedColumnChart implements IChart {
         type: ChartTypes.STACKED_COLUMN.type,
       },
       xAxis: {
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
+        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"],
       },
       // legend: {
       //   align: 'right',
@@ -43,12 +43,12 @@ export default class StackedColumnChart implements IChart {
       //   shadow: false,
       // },
       tooltip: {
-        headerFormat: '<b>{point.x}</b><br/>',
+        headerFormat: "<b>{point.x}</b><br/>",
         pointFormat: `{series.name}: ${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix} <br/>Total: ${chartData.unit.prefix} {point.stackTotal} ${chartData.unit.suffix}`,
       },
       plotOptions: {
         column: {
-          stacking: 'normal',
+          stacking: "normal",
           dataLabels: {
             enabled: true,
           },
@@ -65,20 +65,20 @@ export default class StackedColumnChart implements IChart {
       //   data: [3, 4, 4, 2, 5],
       // }]
       // ,
-      series: series,
+      series,
     };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.STACKED_COLUMN.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(chartSettings)
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartDataPoint(dataPoint)),
+      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
     };
   }
 }

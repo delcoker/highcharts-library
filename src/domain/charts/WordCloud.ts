@@ -1,22 +1,22 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
-import AbstractChart from './AbstractChart';
-import Series from '../models/Series';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class WordCloud implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
-    const data = [];
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
+    const data: any = [];
 
     let chartSettings = {};
     this.highchartFormatter.init(chartSettings, chartData);
@@ -44,33 +44,33 @@ export default class WordCloud implements IChart {
       {
         accessibility: {
           screenReaderSection: {
-            beforeChartFormat: '<h5>{chartTitle}</h5>' +
-              '<div>{chartSubtitle}</div>' +
-              '<div>{chartLongdesc}</div>' +
-              '<div>{viewTableButton}</div>',
-          },
+            beforeChartFormat: "<h5>{chartTitle}</h5>" +
+              "<div>{chartSubtitle}</div>" +
+              "<div>{chartLongdesc}</div>" +
+              "<div>{viewTableButton}</div>"
+          }
         },
         series: [{
           type: ChartTypes.WORD_CLOUD.type,
           data,
-          name: 'Occurrences',
+          name: "Occurrences"
         }],
         title: {
-          text: 'Wordcloud of Lorem Ipsum',
-        },
+          text: "Wordcloud of Lorem Ipsum"
+        }
       };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.WORD_CLOUD.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(chartSettings)
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartDataPoint(dataPoint)),
+      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

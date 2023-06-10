@@ -1,19 +1,19 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import Series from '../models/Series';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import Series from "../models/Series";
+import { IChart } from "./IChart";
 
 export default class SplitPackedBubbleChart implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     let chartSettings = {};
     this.highchartFormatter.init(chartSettings, chartData);
@@ -25,8 +25,8 @@ export default class SplitPackedBubbleChart implements IChart {
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: 'packedbubble',
-        height: '80%',
+        type: "packedbubble",
+        height: "80%",
       },
       tooltip: {
         useHTML: true,
@@ -34,8 +34,8 @@ export default class SplitPackedBubbleChart implements IChart {
       },
       plotOptions: {
         packedbubble: {
-          minSize: '20%',
-          maxSize: '100%',
+          minSize: "20%",
+          maxSize: "100%",
           zMin: 0,
           zMax: 1000,
           layoutAlgorithm: {
@@ -47,21 +47,21 @@ export default class SplitPackedBubbleChart implements IChart {
           },
           dataLabels: {
             enabled: true,
-            format: '{point.name}',
+            format: "{point.name}",
             filter: {
-              property: 'y',
-              operator: '>',
+              property: "y",
+              operator: ">",
               value: bubbleTextDisplayThreshold,
             },
             style: {
-              color: 'black',
-              textOutline: 'none',
-              fontWeight: 'normal',
+              color: "black",
+              textOutline: "none",
+              fontWeight: "normal",
             },
           },
         },
       },
-      series: series,
+      series,
       // series: [
       //     {
       //   name: 'Europe',
@@ -539,7 +539,7 @@ export default class SplitPackedBubbleChart implements IChart {
       // }]
     };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.SPLIT_PACKED_BUBBLE_CHART.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(chartSettings)

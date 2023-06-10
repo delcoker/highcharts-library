@@ -1,8 +1,8 @@
-import { CategoryTypes } from '../enums/CategoryTypes';
+import { CategoryTypes } from "../enums/CategoryTypes";
 
 export default class Category {
-  label: string = '';
-  key: string = '';
-  value: number = null;
-  categoryType: CategoryTypes;
+  public label: string = "";
+  public key: string = "";
+  public value: number = 0 ;
+  public categoryType: CategoryTypes = CategoryTypes.DEFAULT;
 }

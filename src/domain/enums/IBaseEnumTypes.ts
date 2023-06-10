@@ -1,5 +1,5 @@
 // https://www.sohamkamani.com/javascript/enums/
-export default interface BaseEnumTypes<T> {
+export default interface IBaseEnumTypes<T> {
   readonly label: string;
   readonly value: number;
 

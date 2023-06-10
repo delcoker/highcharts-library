@@ -1,21 +1,21 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
-import { IChart } from './IChart';
-import { Builder } from 'builder-pattern';
-import ChartTypes from '../enums/ChartTypes';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
-import AbstractChart from './AbstractChart';
-import Series from '../models/Series';
+import { Builder } from "builder-pattern";
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartTypes from "../enums/ChartTypes";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import ChartData from "../models/ChartData";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
+import AbstractChart from "./AbstractChart";
+import { IChart } from "./IChart";
 
 export default class ColumnChart implements IChart {
-  chartSettings: {} = {};
+  public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
   }
 
-  getChart = (chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse => {
+  public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
 
     this.highchartFormatter.init(this.chartSettings, chartData);
 
@@ -30,20 +30,20 @@ export default class ColumnChart implements IChart {
         tooltip: {
           pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
         },
-        series: series,
+        series,
       };
 
-    return Builder<HighchartResponse>()
+    return Builder<HighchartsResponse>()
       .chartType(ChartTypes.COLUMN.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(this.chartSettings)
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartDataPoint(dataPoint)),
+      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
     };
   }
 }

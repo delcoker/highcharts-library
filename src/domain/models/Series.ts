@@ -1,16 +1,16 @@
-import SeriesTypes, { SeriesType } from '../enums/SeriesTypes';
-import Unit from './Unit';
-import { Builder } from 'builder-pattern';
-import DataPoint from './DataPoint';
-import UnitTypes from '../enums/UnitTypes';
+import { Builder } from "builder-pattern";
+import SeriesTypes, { SeriesType } from "../enums/SeriesTypes";
+import UnitTypes from "../enums/UnitTypes";
+import DataPoint from "./DataPoint";
+import Unit from "./Unit";
 
 export default class Series {
-  name: string = '';
-  description: string = '';
-  key: string = '';
-  seriesType: SeriesTypes = SeriesTypes.DEFAULT;
-  isVisible: boolean = true;
-  values: Array<DataPoint> = new Array<DataPoint>();
-  unit: Unit = Builder<Unit>().unitType(UnitTypes.UNKNOWN).build();
-  meta: Map<string, string>; // is this automatically null?
+  public name: string = "";
+  public description: string = "";
+  public key: string = "";
+  public seriesType: SeriesTypes = SeriesTypes.DEFAULT;
+  public isVisible: boolean = true;
+  public values: DataPoint[] = new Array<DataPoint>();
+  public unit: Unit = Builder<Unit>().unitType(UnitTypes.UNKNOWN).build();
+  public meta: Map<string, string> = new Map<string, string>(); // is this automatically null?
 }

@@ -1,16 +1,16 @@
-import DataPoint from '../models/DataPoint';
-import HighchartDataPoint from '../models/highchart/HighchartDataPoint';
-import Series from '../models/Series';
-import { Builder } from 'builder-pattern';
-import HighchartFormatterImpl from '../formatters/HighchartFormatterImpl';
+import { Builder } from "builder-pattern";
+import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
+import DataPoint from "../models/DataPoint";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
+import Series from "../models/Series";
 
 export default abstract class AbstractChart {
-  constructor(private readonly highchartFormatter: HighchartFormatterImpl) {
+  protected constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
 
   }
 
 
-  public static getHighchartDataPoint(dataPoint: DataPoint): HighchartDataPoint {
+  public static getHighchartsDataPoint(dataPoint: DataPoint): HighchartsDataPoint {
     return {
       name: dataPoint.category.label,
       x: dataPoint.category.value,
@@ -32,6 +32,7 @@ export default abstract class AbstractChart {
       }
     });
 
-    return seriesList.filter(series => series);
+    return seriesList.filter(series => series !== undefined) as Series[];
+
   }
 }

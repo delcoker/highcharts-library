@@ -1,9 +1,9 @@
-import ChartData from '../models/ChartData';
-import HighchartRequest from '../../application/models/HighchartRequest';
-import HighchartResponse from '../../application/models/HighchartResponse';
+import HighchartsRequest from "../../application/models/HighchartsRequest";
+import HighchartsResponse from "../../application/models/HighchartsResponse";
+import ChartData from "../models/ChartData";
 
 export interface IChart {
   chartSettings: {};
 
-  getChart(chartData: ChartData, chartParameters: HighchartRequest): HighchartResponse;
+  getChart(chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse;
 }
