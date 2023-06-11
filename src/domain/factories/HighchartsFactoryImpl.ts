@@ -29,25 +29,25 @@ import IHighchartsFactory from "./IHighchartsFactory";
 export default class HighchartsFactoryImpl implements IHighchartsFactory {
   public chartFactories: Map<ChartTypes, IChart>;
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
     this.chartFactories = new Map();
-    this.chartFactories.set(ChartTypes.BAR, new BarChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.COLUMN, new ColumnChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.LINE, new LineChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.AREA, new AreaChart(highchartFormatter));
-    this.chartFactories.set(ChartTypes.AREASPLINE, new AreaSplineChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.SPLINE, new SplineChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.PIE, new PieChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.STACKED_COLUMN, new StackedColumnChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.STACKED_BAR, new StackedBarChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_COLUMN, new StackedPercentageColumnChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_BAR, new StackedPercentageBarChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.SEMI_CIRCLE_DONUT, new SemiCircleDonutChart(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.SPLIT_PACKED_BUBBLE_CHART, new SplitPackedBubbleChart(this.highchartFormatter));
-    // this.chartFactories.set(ChartTypes.ORGANOGRAM, new Organogram(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.VENN_DIAGRAM, new VennDiagram(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.SPIDER_WEB, new SpiderWeb(this.highchartFormatter));
-    this.chartFactories.set(ChartTypes.WORD_CLOUD, new WordCloud(this.highchartFormatter));
+    this.chartFactories.set(ChartTypes.BAR, new BarChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.COLUMN, new ColumnChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.LINE, new LineChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.AREA, new AreaChart(highchartsFormatter));
+    this.chartFactories.set(ChartTypes.AREASPLINE, new AreaSplineChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.SPLINE, new SplineChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.PIE, new PieChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.STACKED_COLUMN, new StackedColumnChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.STACKED_BAR, new StackedBarChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_COLUMN, new StackedPercentageColumnChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_BAR, new StackedPercentageBarChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.SEMI_CIRCLE_DONUT, new SemiCircleDonutChart(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.SPLIT_PACKED_BUBBLE_CHART, new SplitPackedBubbleChart(this.highchartsFormatter));
+    // this.chartFactories.set(ChartTypes.ORGANOGRAM, new Organogram(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.VENN_DIAGRAM, new VennDiagram(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.SPIDER_WEB, new SpiderWeb(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.WORD_CLOUD, new WordCloud(this.highchartsFormatter));
   }
 
   public getChartData(chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse {
