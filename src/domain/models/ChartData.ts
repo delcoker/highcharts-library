@@ -14,12 +14,12 @@ export default class ChartData {
   public categories: Map<string, Category> = new Map<string, Category>();
   public defaultCategory: string = "";
   public unit: Unit = new Unit();
-  public colours: string[] | string[] = COLOUR_CODES;
+  public colours: string[] = COLOUR_CODES;
   public title: string = "";
 
 
   public isNumericCategories = () => {
-    if (this.categories.values) {
+    if (this.categories && this.categories.values) {
       const firstCategory = Array.from(this.categories.values())[0];
       return typeof firstCategory.value === "number";
     }

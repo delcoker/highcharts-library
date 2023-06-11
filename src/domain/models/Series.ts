@@ -1,5 +1,5 @@
 import { Builder } from "builder-pattern";
-import SeriesTypes, { SeriesType } from "../enums/SeriesTypes";
+import SeriesTypes from "../enums/SeriesTypes";
 import UnitTypes from "../enums/UnitTypes";
 import DataPoint from "./DataPoint";
 import Unit from "./Unit";

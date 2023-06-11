@@ -8,5 +8,5 @@ export default class DataPoint {
     .value(2000)
     .categoryType(CategoryTypes.DEFAULT)
     .build();
-  public y: number | undefined ;
+  public y: number | undefined;
 }

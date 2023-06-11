@@ -7,7 +7,7 @@ import HighchartsFactoryImpl from "../HighchartsFactoryImpl";
 
 jest.mock("../../formatters/HighchartsFormatterImpl");
 
-describe("Appropriate object/class produced by factory", () => {
+describe("Appropriate object/class/chart produced by factory", () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
   const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
 
@@ -22,28 +22,28 @@ describe("Appropriate object/class produced by factory", () => {
 
 
   test("Default chart type used: column", () => {
-    const highchartResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
-    expect(highchartResponse.chartType).toBe("column");
+    const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
+    expect(highchartsResponse.chartType).toBe("column");
   });
 
 
   test("Specified chart type used", () => {
     highchartsRequest.chartType = ChartTypes.SPLIT_PACKED_BUBBLE_CHART;
-    const highchartResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
-    expect(highchartResponse.chartType).toBe(ChartTypes.SPLIT_PACKED_BUBBLE_CHART.label);
+    const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
+    expect(highchartsResponse.chartType).toBe(ChartTypes.SPLIT_PACKED_BUBBLE_CHART.label);
   });
 
 
   test("Default category used: 2000", () => {
-    const highchartResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
-    expect(highchartResponse.selectedCategory).toBe("2000");
+    const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
+    expect(highchartsResponse.selectedCategory).toBe("2000");
   });
 
 
   test("Passed category used", () => {
     highchartsRequest.selectedCategory = "3333";
-    const highchartResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
-    expect(highchartResponse.selectedCategory).toBe("3333");
+    const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
+    expect(highchartsResponse.selectedCategory).toBe("3333");
   });
 });
 
