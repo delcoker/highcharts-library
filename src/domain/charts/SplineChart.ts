@@ -12,24 +12,24 @@ import { IChart } from "./IChart";
 export default class SplineChart implements IChart {
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
     let chartSettings = {};
-    this.highchartFormatter.init(chartSettings, chartData);
+    this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: ChartTypes.SPLINE.type,
+        type: ChartTypes.SPLINE.type
       },
       tooltip: {
-        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
+        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`
       },
-      series,
+      series
     };
 
     return Builder<HighchartsResponse>()
@@ -39,10 +39,10 @@ export default class SplineChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

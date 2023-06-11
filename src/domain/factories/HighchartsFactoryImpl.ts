@@ -40,7 +40,10 @@ export default class HighchartsFactoryImpl implements IHighchartsFactory {
     this.chartFactories.set(ChartTypes.PIE, new PieChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.STACKED_COLUMN, new StackedColumnChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.STACKED_BAR, new StackedBarChart(this.highchartsFormatter));
-    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_COLUMN, new StackedPercentageColumnChart(this.highchartsFormatter));
+    this.chartFactories.set(
+      ChartTypes.STACKED_PERCENTAGE_COLUMN,
+      new StackedPercentageColumnChart(this.highchartsFormatter)
+    );
     this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_BAR, new StackedPercentageBarChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.SEMI_CIRCLE_DONUT, new SemiCircleDonutChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.SPLIT_PACKED_BUBBLE_CHART, new SplitPackedBubbleChart(this.highchartsFormatter));

@@ -12,26 +12,24 @@ import { IChart } from "./IChart";
 export default class ColumnChart implements IChart {
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
+    this.highchartsFormatter.init(this.chartSettings, chartData);
 
-    this.highchartFormatter.init(this.chartSettings, chartData);
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
-
-    this.chartSettings =
-      {
-        ...this.chartSettings,
-        chart: {
-          type: ChartTypes.COLUMN.type,
-        },
-        tooltip: {
-          pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
-        },
-        series,
-      };
+    this.chartSettings = {
+      ...this.chartSettings,
+      chart: {
+        type: ChartTypes.COLUMN.type
+      },
+      tooltip: {
+        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`
+      },
+      series
+    };
 
     return Builder<HighchartsResponse>()
       .chartType(ChartTypes.COLUMN.label)
@@ -40,10 +38,10 @@ export default class ColumnChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

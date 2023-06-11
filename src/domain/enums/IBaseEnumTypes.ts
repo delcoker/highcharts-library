@@ -5,4 +5,3 @@ export default interface IBaseEnumTypes<T> {
 
   getType(label: string): T;
 }
-

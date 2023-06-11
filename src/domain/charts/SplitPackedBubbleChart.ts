@@ -10,15 +10,24 @@ import { IChart } from "./IChart";
 export default class SplitPackedBubbleChart implements IChart {
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
+  }
+
+  private static getSeriesData(oneSeries: Series): { name: string; data: {} } {
+    return {
+      name: oneSeries.name,
+      data: oneSeries.values.map((dataPoint) => ({
+        name: dataPoint.category.label,
+        value: dataPoint.y
+      }))
+    };
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-
     let chartSettings = {};
-    this.highchartFormatter.init(chartSettings, chartData);
+    this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => SplitPackedBubbleChart.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => SplitPackedBubbleChart.getSeriesData(oneSeries));
 
     const bubbleTextDisplayThreshold = 1;
 
@@ -26,11 +35,11 @@ export default class SplitPackedBubbleChart implements IChart {
       ...chartSettings,
       chart: {
         type: "packedbubble",
-        height: "80%",
+        height: "80%"
       },
       tooltip: {
         useHTML: true,
-        pointFormat: `<b>{point.name}: </b>${chartData.unit.prefix} {point.value:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
+        pointFormat: `<b>{point.name}: </b>${chartData.unit.prefix} {point.value:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`
       },
       plotOptions: {
         packedbubble: {
@@ -43,7 +52,7 @@ export default class SplitPackedBubbleChart implements IChart {
             splitSeries: true,
             seriesInteraction: false,
             dragBetweenSeries: true,
-            parentNodeLimit: true,
+            parentNodeLimit: true
           },
           dataLabels: {
             enabled: true,
@@ -51,17 +60,17 @@ export default class SplitPackedBubbleChart implements IChart {
             filter: {
               property: "y",
               operator: ">",
-              value: bubbleTextDisplayThreshold,
+              value: bubbleTextDisplayThreshold
             },
             style: {
               color: "black",
               textOutline: "none",
-              fontWeight: "normal",
-            },
-          },
-        },
+              fontWeight: "normal"
+            }
+          }
+        }
       },
-      series,
+      series
       // series: [
       //     {
       //   name: 'Europe',
@@ -545,14 +554,4 @@ export default class SplitPackedBubbleChart implements IChart {
       .chartConfig(chartSettings)
       .build();
   };
-
-  private static getSeriesData(oneSeries: Series): { name: string, data: {} } {
-    return {
-      name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => ({
-        name: dataPoint.category.label,
-        value: dataPoint.y,
-      })),
-    };
-  }
 }

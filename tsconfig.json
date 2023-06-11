@@ -9,7 +9,9 @@
     "experimentalDecorators": true,
     "lib": [
       "es2015.collection",
-      "es2015.core"
+      "es2015.core",
+      "es2019",
+      "dom"
     ]
   },
   "include": [

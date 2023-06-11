@@ -20,12 +20,10 @@ describe("Appropriate object/class/chart produced by factory", () => {
     highchartsFormatter.init({}, chartData);
   });
 
-
   test("Default chart type used: column", () => {
     const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
     expect(highchartsResponse.chartType).toBe("column");
   });
-
 
   test("Specified chart type used", () => {
     highchartsRequest.chartType = ChartTypes.SPLIT_PACKED_BUBBLE_CHART;
@@ -33,12 +31,10 @@ describe("Appropriate object/class/chart produced by factory", () => {
     expect(highchartsResponse.chartType).toBe(ChartTypes.SPLIT_PACKED_BUBBLE_CHART.label);
   });
 
-
   test("Default category used: 2000", () => {
     const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
     expect(highchartsResponse.selectedCategory).toBe("2000");
   });
-
 
   test("Passed category used", () => {
     highchartsRequest.selectedCategory = "3333";
@@ -46,4 +42,3 @@ describe("Appropriate object/class/chart produced by factory", () => {
     expect(highchartsResponse.selectedCategory).toBe("3333");
   });
 });
-

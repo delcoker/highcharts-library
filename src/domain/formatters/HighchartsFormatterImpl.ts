@@ -20,35 +20,35 @@ export default class HighchartsFormatterImpl implements IHighchartsFormatter {
     chartSettings.legend = { enabled: true };
     chartSettings.plotOptions = {
       series: {
-        dataLabels:
-          { enabled: true },
-      },
+        dataLabels: { enabled: true }
+      }
     };
 
     chartSettings.tooltip = {
-      borderRadius: 7,
+      borderRadius: 7
     };
 
     chartSettings.yAxis = {
       min: 0,
       title: {
-        text: chartData.unit.axisName + " in " + chartData.unit.suffix,
+        text: chartData.unit.axisName + " in " + chartData.unit.suffix
       },
       stackLabels: {
         enabled: true,
         style: {
           fontWeight: "bold",
-          color: /*( // theme
-              Highcharts.defaultOptions.title.style &&
-              Highcharts.defaultOptions.title.style.color
-            ) ||*/ "gray",
-        },
-      },
+          color:
+          /*( // theme
+            Highcharts.defaultOptions.title.style &&
+            Highcharts.defaultOptions.title.style.color
+          ) ||*/ "gray"
+        }
+      }
     };
 
     let min;
     if (chartData.isNumericCategories()) {
-      const categories  = Array.from(chartData.categories.values()).map(category => category.value);
+      const categories = Array.from(chartData.categories.values()).map((category) => category.value);
       min = { min: Math.min(...categories) };
     }
 
@@ -62,12 +62,13 @@ export default class HighchartsFormatterImpl implements IHighchartsFormatter {
         enabled: true,
         style: {
           fontWeight: "bold",
-          color: /*( // theme
-              Highcharts.defaultOptions.title.style &&
-              Highcharts.defaultOptions.title.style.color
-            ) ||*/ "gray",
-        },
-      },
+          color:
+          /*( // theme
+            Highcharts.defaultOptions.title.style &&
+            Highcharts.defaultOptions.title.style.color
+          ) ||*/ "gray"
+        }
+      }
     };
   }
-};
+}

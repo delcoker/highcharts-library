@@ -19,17 +19,17 @@ export default class AreaChart implements IChart {
     let chartSettings = {};
     this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: ChartTypes.AREA.type,
+        type: ChartTypes.AREA.type
       },
       tooltip: {
-        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
+        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`
       },
-      series,
+      series
     };
 
     return Builder<HighchartsResponse>()
@@ -39,11 +39,10 @@ export default class AreaChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values
-        .map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

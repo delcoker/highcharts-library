@@ -12,30 +12,30 @@ import { IChart } from "./IChart";
 export default class StackedBarChart implements IChart {
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-
     let chartSettings = {};
-    this.highchartFormatter.init(chartSettings, chartData);
+    this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: ChartTypes.STACKED_BAR.type,
+        type: ChartTypes.STACKED_BAR.type
       },
       tooltip: {
         headerFormat: "<b>{point.x}</b><br/>",
-        pointFormat: `{series.name}: ${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix} <br/>Total: ${chartData.unit.prefix} {point.stackTotal} ${chartData.unit.suffix}`,
+        pointFormat: `{series.name}: ${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix} <br/>Total: ${chartData.unit.prefix} {point.stackTotal} ${chartData.unit.suffix}`
       },
-      xAxis: { // not needed
-        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"],
+      xAxis: {
+        // not needed
+        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
       },
       legend: {
-        reversed: true,
+        reversed: true
       },
       plotOptions: {
         // series: {
@@ -45,9 +45,9 @@ export default class StackedBarChart implements IChart {
         bar: {
           stacking: "normal",
           dataLabels: {
-            enabled: true,
-          },
-        },
+            enabled: true
+          }
+        }
       },
       // series: [{
       //   name: 'John',
@@ -60,7 +60,7 @@ export default class StackedBarChart implements IChart {
       //   data: [3, 4, 4, 2, 5],
       // }]
       // ,
-      series,
+      series
     };
 
     return Builder<HighchartsResponse>()
@@ -70,10 +70,10 @@ export default class StackedBarChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

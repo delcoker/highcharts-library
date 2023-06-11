@@ -17,20 +17,12 @@ export default class ChartData {
   public colours: string[] = COLOUR_CODES;
   public title: string = "";
 
-
   public isNumericCategories = () => {
     if (this.categories && this.categories.values) {
       const firstCategory = Array.from(this.categories.values())[0];
-      return typeof firstCategory.value === "number";
+      return true;
     }
-    return false
+    return false;
   };
 
-  // toHighchartResponse = (): HighchartResponse => {
-  //   return Builder<HighchartResponse>()
-  //     .chartType(this.defaultChartType.label)
-  //     .selectedCategory(this.defaultCategory)
-  //     .chartConfig('')
-  //     .build();
-  // };
 }

@@ -16,21 +16,20 @@ export default class LineChart implements IChart {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-
     let chartSettings = {};
     this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: chartParameters.chartType.type, // trying out request param here
+        type: chartParameters.chartType.type // trying out request param here
       },
       tooltip: {
-        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`,
+        pointFormat: `{series.name}: <b>${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix}</b>`
       },
-      series,
+      series
     };
 
     return Builder<HighchartsResponse>()
@@ -40,10 +39,10 @@ export default class LineChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }

@@ -12,35 +12,34 @@ import { IChart } from "./IChart";
 export default class StackedPercentageColumnChart implements IChart {
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-
     let chartSettings = {};
-    this.highchartFormatter.init(chartSettings, chartData);
+    this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map(oneSeries => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
 
     chartSettings = {
       ...chartSettings,
       chart: {
-        type: ChartTypes.STACKED_PERCENTAGE_COLUMN.type,
+        type: ChartTypes.STACKED_PERCENTAGE_COLUMN.type
       },
       xAxis: {
-        categories: ["2010", "2011", "2012", "2013", "2015"],
+        categories: ["2010", "2011", "2012", "2013", "2015"]
       },
       tooltip: {
         pointFormat: `<span style="color:{series.color}">{series.name}</span>: ${chartData.unit.prefix} <b> {point.y:.${chartData.unit.decimalPlaces}f}</b> ${chartData.unit.suffix} ({point.percentage:.0f}%)<br/>`,
-        shared: true,
+        shared: true
       },
       plotOptions: {
         column: {
           stacking: "percent",
           dataLabels: {
-            enabled: true,
-          },
-        },
+            enabled: true
+          }
+        }
       },
       // series: [{
       //   name: 'John',
@@ -53,7 +52,7 @@ export default class StackedPercentageColumnChart implements IChart {
       //   data: [3, 4, 4, 2, 5],
       // }]
       // ,
-      series,
+      series
     };
 
     return Builder<HighchartsResponse>()
@@ -63,10 +62,10 @@ export default class StackedPercentageColumnChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string, data: HighchartsDataPoint[] } {
+  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map(dataPoint => AbstractChart.getHighchartsDataPoint(dataPoint)),
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
     };
   }
 }
