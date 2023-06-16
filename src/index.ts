@@ -6,10 +6,12 @@ import Series from "./domain/models/Series";
 import Unit from "./domain/models/Unit";
 import UnitTypes from "./domain/enums/UnitTypes";
 import ChartData from "./domain/models/ChartData";
+import SeriesTypes from "./domain/enums/SeriesTypes";
+import * as data from "./domain/formatters/akorno.json"
 
 export const greeter = (name: string) => `Hello ${name}`;
 
-export const getChart = (): ChartData => {
+export const getChartData = (): ChartData => {
   // dummy chart data start
   const category2010 = Builder(Category).label("2010").categoryType(CategoryTypes.DEFAULT).value(2010).build();
   const category2011 = Builder(Category).label("2011").categoryType(CategoryTypes.DEFAULT).value(2011).build();
@@ -39,30 +41,9 @@ export const getChart = (): ChartData => {
   const sierraLeonePoint5 = Builder(DataPoint).y(910.76999997).category(category2014).build();
   const sierraLeonePoint6 = Builder(DataPoint).y(710.9).category(category2015).build();
 
-  const dpsCanada = new Array<DataPoint>(
-    canadaDataPoint1,
-    canadaDataPoint2,
-    canadaDataPoint3,
-    canadaDataPoint4,
-    canadaDataPoint5,
-    canadaDataPoint6
-  );
-  const dps2 = new Array<DataPoint>(
-    germanyDataPoint1,
-    germanyDataPoint2,
-    germanyDataPoint3,
-    germanyDataPoint4,
-    germanyDataPoint5,
-    germanyDataPoint6
-  );
-  const dps3 = new Array<DataPoint>(
-    sierraLeonePoint1,
-    sierraLeonePoint2,
-    sierraLeonePoint3,
-    sierraLeonePoint4,
-    sierraLeonePoint5,
-    sierraLeonePoint6
-  );
+  const dpsCanada = new Array<DataPoint>(canadaDataPoint1, canadaDataPoint2, canadaDataPoint3, canadaDataPoint4, canadaDataPoint5, canadaDataPoint6);
+  const dps2 = new Array<DataPoint>(germanyDataPoint1, germanyDataPoint2, germanyDataPoint3, germanyDataPoint4, germanyDataPoint5, germanyDataPoint6);
+  const dps3 = new Array<DataPoint>(sierraLeonePoint1, sierraLeonePoint2, sierraLeonePoint3, sierraLeonePoint4, sierraLeonePoint5, sierraLeonePoint6);
 
   let canada = Builder(Series).name("Canada").isVisible(true).values(dpsCanada).build();
   let germany = Builder(Series).name("Germany").isVisible(true).values(dps2).build();
@@ -87,7 +68,7 @@ export const getChart = (): ChartData => {
   // const intersection = manualCategories.filter(element => categories.includes(element));
   // console.logger(intersection);
 
-  const chartData = Builder(ChartData)
+  return Builder(ChartData)
     .id("special")
     .title("title")
     // .defaultChartType(ChartTypes.COLUMN)
@@ -97,8 +78,62 @@ export const getChart = (): ChartData => {
     .unit(seriesUnit)
     // .colours([COLOUR_CODES[5], COLOUR_CODES[9]]) // use default colour scheme cause Builder default
     .build();
-
-  // log.json(chartData);
-
-  return chartData;
 };
+
+  export const getChartDataFromFile = (): ChartData => {
+    const categoriesMap = new Map<string, Category>();
+    Object.entries(data.categories).forEach(([key, value]) => {
+      const category = new Category();
+      category.label = value.label;
+      category.key = value.key ?? "";
+      category.value = value.value;
+      category.categoryType = CategoryTypes[value.categoryType as keyof typeof CategoryTypes];
+      categoriesMap.set(key, category);
+    });
+
+    const seriesArray: Array<Series> = data.seriesList.map(series => {
+      const dataPoints: Array<DataPoint> = series.values.map(value => {
+        const dataPoint = new DataPoint();
+        dataPoint.category = {
+          label: value.category.label,
+          key: value.category.key ?? "",
+          value: value.category.value,
+          categoryType: CategoryTypes[value.category.categoryType as keyof typeof CategoryTypes]
+        };
+        dataPoint.y = value.y;
+        return dataPoint;
+      });
+
+      return Builder<Series>()
+        .name(series.name)
+        .description(series.description ?? "")
+        .key(series.key ?? "")
+        .seriesType(SeriesTypes.getSeriesType(series.seriesType.label))
+        .isVisible(series.visible)
+        .values(dataPoints)
+        .unit(Builder<Unit>().unitType(UnitTypes.UNKNOWN).build())
+        .meta(new Map<string, string>())
+        .build();
+    });
+
+    const unitObject = data.unit;
+    const unit = Builder<Unit>()
+      .name(unitObject.name)
+      .description(unitObject.description || "no description")
+      .axisName(unitObject.axisName)
+      .prefix(unitObject.prefix)
+      .suffix(unitObject.suffix)
+      .decimalPlaces(unitObject.decimalPlaces)
+      .unitType(UnitTypes.getUnitType(unitObject.unitType))
+      .build();
+
+    return Builder(ChartData)
+      .categories(categoriesMap)
+      .seriesList(seriesArray)
+      .id(data.id)
+      .unit(unit)
+      .defaultCategory(data.defaultCategory)
+      .title(data.title)
+      .colours(data.colours)
+      .build();
+  }

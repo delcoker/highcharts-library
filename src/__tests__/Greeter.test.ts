@@ -1,4 +1,4 @@
-import { getChart, greeter } from "../index";
+import { getChartData, getChartDataFromFile, greeter } from "../index";
 import HighchartsFormatterImpl from "../domain/formatters/HighchartsFormatterImpl";
 import HighchartsFactoryImpl from "../domain/factories/HighchartsFactoryImpl";
 import ChartData from "../domain/models/ChartData";
@@ -14,15 +14,15 @@ test("Test chart data", () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
   const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
 
-  const chartData: ChartData = getChart();
+  const chartData: ChartData = getChartData();
   const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
-    .chartData(chartData)
+    // .chartData(chartData)
     .selectedCategory("2010")
     .chartType(ChartTypes.PIE)
     .build();
   // highchartsFormatter.init({}, chartData);
 
-  const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
+  const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
   expect(highchartsResponse.chartType).toBe("pie");
   expect(highchartsResponse.chartConfig.series).toStrictEqual([{
       data: [
@@ -37,15 +37,31 @@ test("MANUAL Test chart data for JSFIDDLE", () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
   const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
 
-  const chartData: ChartData = getChart();
+  const chartData: ChartData = getChartData();
   const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
     .chartData(chartData)
     .selectedCategory("2010")
     .chartType(ChartTypes.COLUMN)
     .build();
-  // highchartsFormatter.init({}, chartData);
 
-  const highchartsResponse = highchartsFactory.getChartData(chartData, highchartsRequest);
-  console.dir(highchartsResponse, { depth: null, colors: true });
+  const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
+  // console.dir(highchartsResponse, { depth: null, colors: true });
   expect(highchartsResponse.chartType).toBe("column");
+});
+
+
+test("TEST AKORNO FILE DATA", () => {
+  const highchartsFormatter = new HighchartsFormatterImpl();
+  const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
+
+  const chartData: ChartData = getChartDataFromFile();
+  const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
+    .chartData(chartData)
+    .selectedCategory("2010")
+    .chartType(ChartTypes.COLUMN)
+    .build();
+
+  const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
+  console.dir(highchartsResponse.chartConfig, { depth: null, colors: true });
+  // expect(highchartsResponse.chartType).toBe("column");
 });

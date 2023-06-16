@@ -22,7 +22,7 @@ export default class UnitTypes implements IBaseEnumTypes<UnitTypes> {
   }
 
   public static getUnitType = (label: string): UnitTypes => {
-    const key = Object.keys(UnitTypes).find((unitType) => unitType.toLowerCase() === label);
+    const key = Object.keys(UnitTypes).find((unitType) => unitType.toLowerCase() === label.toLowerCase());
     if (key === undefined) {
       throw new Error();
     }

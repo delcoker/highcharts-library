@@ -27,18 +27,13 @@ export default class VennDiagram implements IChart {
       {
         accessibility: {
           point: {
-            descriptionFormatter(point: any) {
-              const intersection = point.sets.join(", "),
-                name = point.name,
-                ix = point.index + 1,
-                val = point.value;
-              return ix + ". Intersection: " + intersection + ". " +
-                (point.sets.length > 1 ? name + ". " : "") + "Value " + val + ".";
-            }
+            descriptionFormat: "{add index 1}. Intersection: {sets}. " +
+              "{#if (gt sets.length 1)}{name}. {/if}" +
+              "Value {value}"
           }
         },
         series: [{
-          type: ChartTypes.VENN_DIAGRAM.type,
+          type: "venn",
           name: "The Unattainable Triangle",
           data: [{
             sets: ["Good"],
@@ -70,7 +65,8 @@ export default class VennDiagram implements IChart {
         title: {
           text: "The Unattainable Triangle"
         }
-      };
+      }
+    ;
 
     return Builder<HighchartsResponse>()
       .chartType(ChartTypes.VENN_DIAGRAM.label)

@@ -1,6 +1,6 @@
 {
   "name": "highcharts-library",
-  "version": "1.0.0",
+  "version": "1.0.39",
   "description": "High Chart Switcher",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,10 +10,11 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint \"src/**/*.ts\"",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm test",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@babel/plugin-transform-class-properties": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@types/highcharts": "^7.0.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^14.14.41",
     "builder-pattern": "^2.2.0",
@@ -49,5 +51,9 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "highcharts": "^11.1.0",
+    "highcharts-library": "^1.0.37"
+  }
 }

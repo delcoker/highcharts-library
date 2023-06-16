@@ -12,20 +12,10 @@ export default class ChartTypes implements IBaseEnumTypes<ChartTypes> {
   public static PIE = new ChartTypes("pie", "pie", "pie", i++);
   public static SEMI_CIRCLE_DONUT = new ChartTypes("semi_circle_donut", "Semi Circle Donut", "semi circle donut", i++);
   public static STACKED_COLUMN = new ChartTypes("stacked_column", "Stacked Chart", "column", i++);
-  public static STACKED_PERCENTAGE_COLUMN = new ChartTypes(
-    "stacked_percentage_column",
-    "Stacked Percentage Column",
-    "column",
-    i++
-  );
+  public static STACKED_PERCENTAGE_COLUMN = new ChartTypes("stacked_percentage_column", "Stacked Percentage Column", "column", i++);
   public static STACKED_PERCENTAGE_BAR = new ChartTypes("stacked_percentage_bar", "Stacked Percentage Bar", "bar", i++);
   public static STACKED_BAR = new ChartTypes("stacked_bar", "Stacked Bar", "bar", i++);
-  public static SPLIT_PACKED_BUBBLE_CHART = new ChartTypes(
-    "split_packed_bubble_chart",
-    "Split Packed Bubble",
-    "packedbubble",
-    i++
-  );
+  public static SPLIT_PACKED_BUBBLE_CHART = new ChartTypes("split_packed_bubble_chart", "Split Packed Bubble", "packedbubble", i++);
   public static TABLE = new ChartTypes("table", "table", "table", i++);
   public static ORGANOGRAM = new ChartTypes("organogram", "Organogram", "organization", i++);
   public static SPIDER_WEB = new ChartTypes("spider_web", "Spider Web", "line", i++);
@@ -41,9 +31,9 @@ export default class ChartTypes implements IBaseEnumTypes<ChartTypes> {
 
   constructor(label: string, display: string, type: string, value: number) {
     this.label = label;
-    this.display = display;
-    this.value = value;
+    this.display = display
     this.type = type;
+    this.value = value;
   }
 
   public static getChartType = (label: string): ChartTypes => {

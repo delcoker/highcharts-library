@@ -10,7 +10,7 @@ export default abstract class AbstractChart {
   }
 
 
-  public static getHighchartsDataPoint(dataPoint: DataPoint): HighchartsDataPoint {
+  public static getHighchartsDataPoint(dataPoint: DataPoint): { name: string; x: number; y: number | null | undefined } {
     return {
       name: dataPoint.category.label,
       x: dataPoint.category.value,
@@ -42,7 +42,7 @@ export default abstract class AbstractChart {
         .build();
 
       const defaultSeriesListForCategory = Builder<Series>()
-        .name(oneSeries.name + " No dp for this series")
+        .name(oneSeries.name) // TODO " No dp found for this series"
         .values(new Array<DataPoint>(dp))
         .build();
 

@@ -2,17 +2,17 @@ import { Builder } from "builder-pattern";
 import HighchartsRequest from "../../application/models/HighchartsRequest";
 import HighchartsResponse from "../../application/models/HighchartsResponse";
 import ChartTypes from "../enums/ChartTypes";
-import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
 import ChartData from "../models/ChartData";
-import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
 import Series from "../models/Series";
-import AbstractChart from "./AbstractChart";
 import { IChart } from "./IChart";
+import IHighchartsFormatter from "../formatters/IHighchartsFormatter";
 
 export default class ColumnChart implements IChart {
+  public readonly highchartsFormatter: IHighchartsFormatter;
   public chartSettings: {} = {};
 
-  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
+  constructor(highchartsFormatter: IHighchartsFormatter) {
+    this.highchartsFormatter = highchartsFormatter;
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
@@ -31,6 +31,7 @@ export default class ColumnChart implements IChart {
       series
     };
 
+
     return Builder<HighchartsResponse>()
       .chartType(ChartTypes.COLUMN.label)
       .selectedCategory(chartParameters.selectedCategory)
@@ -38,10 +39,18 @@ export default class ColumnChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
+  // private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
+  //   return {
+  //     name: oneSeries.name,
+  //     data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
+  //   };
+  // }
+
+  private getSeriesData(oneSeries: Series): { data: (number | null | undefined)[]; name: string } {
     return {
       name: oneSeries.name,
-      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
+      data: oneSeries.values.map((dataPoint) => dataPoint.y)
+
     };
   }
 }

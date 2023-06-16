@@ -24,7 +24,7 @@ export default class SeriesTypes implements IBaseEnumTypes<SeriesTypes> {
   }
 
   public static getSeriesType = (label: string): SeriesTypes => {
-    const key = Object.keys(SeriesTypes).find((seriesType) => seriesType.toLowerCase() === label);
+    const key = Object.keys(SeriesTypes).find((seriesType) => seriesType.toLowerCase() === label.toLowerCase());
     if (key === undefined) {
       throw new Error();
     }

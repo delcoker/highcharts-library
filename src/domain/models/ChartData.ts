@@ -17,7 +17,18 @@ export default class ChartData {
   public colours: string[] = COLOUR_CODES;
   public title: string = "";
 
-  public isNumericCategories = () => {
+  constructor() {
+    this.id = "";
+    this.defaultChartType = ChartTypes.COLUMN;
+    this.seriesList = [];
+    this.categories = new Map<string, Category>();
+    this.defaultCategory = "";
+    this.unit = new Unit();
+    this.colours = COLOUR_CODES;
+    this.title = "";
+  }
+
+  public isNumericCategories = (): boolean => {
     if (this.categories && this.categories.values) {
       const firstCategory = Array.from(this.categories.values())[0];
       return true;

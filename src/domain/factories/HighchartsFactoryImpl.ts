@@ -24,6 +24,8 @@ import { IllegalArgumentException } from "../exceptions/IllegalArgumentException
 import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
 import ChartData from "../models/ChartData";
 import IHighchartsFactory from "./IHighchartsFactory";
+import Organogram from "../charts/Organogram";
+import TreeMap from "../charts/TreeMap";
 
 // @Service()
 export default class HighchartsFactoryImpl implements IHighchartsFactory {
@@ -40,20 +42,18 @@ export default class HighchartsFactoryImpl implements IHighchartsFactory {
     this.chartFactories.set(ChartTypes.PIE, new PieChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.STACKED_COLUMN, new StackedColumnChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.STACKED_BAR, new StackedBarChart(this.highchartsFormatter));
-    this.chartFactories.set(
-      ChartTypes.STACKED_PERCENTAGE_COLUMN,
-      new StackedPercentageColumnChart(this.highchartsFormatter)
-    );
+    this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_COLUMN, new StackedPercentageColumnChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.STACKED_PERCENTAGE_BAR, new StackedPercentageBarChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.SEMI_CIRCLE_DONUT, new SemiCircleDonutChart(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.SPLIT_PACKED_BUBBLE_CHART, new SplitPackedBubbleChart(this.highchartsFormatter));
-    // this.chartFactories.set(ChartTypes.ORGANOGRAM, new Organogram(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.ORGANOGRAM, new Organogram(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.VENN_DIAGRAM, new VennDiagram(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.SPIDER_WEB, new SpiderWeb(this.highchartsFormatter));
     this.chartFactories.set(ChartTypes.WORD_CLOUD, new WordCloud(this.highchartsFormatter));
+    this.chartFactories.set(ChartTypes.TREEMAP, new TreeMap(this.highchartsFormatter));
   }
 
-  public getChartData(chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse {
+  public getChart(chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse {
     const chartType = chartParameters.chartType;
     if (chartType === ChartTypes.TABLE) {
       throw new IllegalArgumentException("Chart type coming soon! => " + chartType.display);
