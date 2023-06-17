@@ -30,10 +30,10 @@ export default class StackedBarChart implements IChart {
         headerFormat: "<b>{point.x}</b><br/>",
         pointFormat: `{series.name}: ${chartData.unit.prefix} {point.y:.${chartData.unit.decimalPlaces}f} ${chartData.unit.suffix} <br/>Total: ${chartData.unit.prefix} {point.stackTotal} ${chartData.unit.suffix}`
       },
-      xAxis: {
-        // not needed
-        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
-      },
+      // xAxis: {
+      //   // not needed
+      //   // categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
+      // },
       legend: {
         reversed: true
       },

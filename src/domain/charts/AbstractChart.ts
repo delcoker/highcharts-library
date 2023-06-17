@@ -1,7 +1,6 @@
 import { Builder } from "builder-pattern";
 import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
 import DataPoint from "../models/DataPoint";
-import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
 import Series from "../models/Series";
 
 export default abstract class AbstractChart {

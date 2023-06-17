@@ -26,9 +26,6 @@ export default class StackedPercentageColumnChart implements IChart {
       chart: {
         type: ChartTypes.STACKED_PERCENTAGE_COLUMN.type
       },
-      xAxis: {
-        categories: ["2010", "2011", "2012", "2013", "2015"]
-      },
       tooltip: {
         pointFormat: `<span style="color:{series.color}">{series.name}</span>: ${chartData.unit.prefix} <b> {point.y:.${chartData.unit.decimalPlaces}f}</b> ${chartData.unit.suffix} ({point.percentage:.0f}%)<br/>`,
         shared: true

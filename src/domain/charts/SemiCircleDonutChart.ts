@@ -11,35 +11,31 @@ import { IChart } from "./IChart";
 export default class SemiCircleDonutChart implements IChart {
   public chartSettings = {};
 
-  constructor(private readonly highchartFormatter: HighchartsFormatterImpl) {
+  constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
   }
 
   public static getSemiCircleDonutSeries(
     chartParameters: HighchartsRequest,
-    SemiCircleDonutSeries: Array<Array<string | number>>
+    SemiCircleDonutSeries: (string | number )[][]
   ) {
     return {
       name: chartParameters.selectedCategory,
       data: SemiCircleDonutSeries
     };
   }
+  public static getHighchartsSemiCircleDonutDataPoint(seriesList: Series[]): (string | number)[] {
+    const name = seriesList[0].name;
+    const y = seriesList[0].values[0].y ?? 0;
 
-  public static getHighchartSemiCircleDonutDataPoint(seriesList: Series[]): Array<string | number> {
-    // @ts-ignore
-    return [seriesList[0].name, seriesList[0].values[0].y];
+    return [name, y];
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-    // let chartSettings = {};
-    this.highchartFormatter.init(this.chartSettings, chartData);
+    this.highchartsFormatter.init(this.chartSettings, chartData);
 
     const semiCircleDonutSeries = chartData.seriesList
-      // @ts-ignore
-      .map((oneSeries) =>
-        AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory)
-      )
-      // @ts-ignore
-      .map((oneCategorySeries) => SemiCircleDonutChart.getHighchartSemiCircleDonutDataPoint(oneCategorySeries));
+      .map((oneSeries) => AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory))
+      .map((oneCategorySeries) => SemiCircleDonutChart.getHighchartsSemiCircleDonutDataPoint(oneCategorySeries));
 
     const series = SemiCircleDonutChart.getSemiCircleDonutSeries(chartParameters, semiCircleDonutSeries);
 

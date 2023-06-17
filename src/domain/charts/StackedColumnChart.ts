@@ -26,9 +26,6 @@ export default class StackedColumnChart implements IChart {
       chart: {
         type: ChartTypes.STACKED_COLUMN.type
       },
-      xAxis: {
-        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
-      },
       // legend: {
       //   align: 'right',
       //   x: -30,

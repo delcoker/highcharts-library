@@ -26,9 +26,6 @@ export default class StackedPercentageBarChart implements IChart {
       chart: {
         type: ChartTypes.STACKED_PERCENTAGE_BAR.type
       },
-      xAxis: {
-        categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
-      },
       tooltip: {
         pointFormat: `<span style="color:{series.color}">{series.name}</span>: ${chartData.unit.prefix} <b> {point.y:.${chartData.unit.decimalPlaces}f}</b> ${chartData.unit.suffix} ({point.percentage:.0f}%)<br/>`,
         shared: true

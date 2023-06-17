@@ -16,12 +16,19 @@ export default class PieChart implements IChart {
   }
 
   private static getPieSeries(chartParameters: HighchartsRequest, pieSeries: HighchartsDataPoint[]): { name: string; y: number }[] {
-    return pieSeries.map((dataPoint: HighchartsDataPoint) => {
-      return {
-        name: dataPoint.name || "",
-        y: dataPoint.y || 0
-      };
-    });
+    const series = pieSeries
+      .filter((dataPoint) => dataPoint.y !== null)
+      .map((dataPoint: HighchartsDataPoint) => this.mapDataToPoint(dataPoint))
+      .sort((a, b) => b.y - a.y);
+
+    return series;
+  }
+
+  private static mapDataToPoint(dataPoint: HighchartsDataPoint) {
+    return {
+      name: dataPoint.name || "",
+      y: dataPoint.y as number
+    };
   }
 
   private static getHighchartsDataPoint(seriesList: Series[]): HighchartsDataPoint {
@@ -33,19 +40,17 @@ export default class PieChart implements IChart {
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
-    let chartSettings = {};
-    this.highchartsFormatter.init(chartSettings, chartData);
+    this.highchartsFormatter.init(this.chartSettings, chartData);
 
     const pieSeries = chartData.seriesList
-      .map((oneSeries) =>
-        AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory)
-      )
+      .filter((series) => series.values.some((dataPoint) => dataPoint.category.label === chartParameters.selectedCategory))
+      .map((oneSeries) => AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory))
       .map((oneCategorySeries) => PieChart.getHighchartsDataPoint(oneCategorySeries));
 
     const series = PieChart.getPieSeries(chartParameters, pieSeries);
 
-    chartSettings = {
-      ...chartSettings,
+    this.chartSettings = {
+      ...this.chartSettings,
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -79,7 +84,7 @@ export default class PieChart implements IChart {
     return Builder<HighchartsResponse>()
       .chartType(ChartTypes.PIE.label)
       .selectedCategory(chartParameters.selectedCategory)
-      .chartConfig(chartSettings)
+      .chartConfig(this.chartSettings)
       .build();
   };
 }

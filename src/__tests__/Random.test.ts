@@ -57,11 +57,16 @@ test("TEST AKORNO FILE DATA", () => {
   const chartData: ChartData = getChartDataFromFile();
   const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
     .chartData(chartData)
-    .selectedCategory("2010")
-    .chartType(ChartTypes.COLUMN)
+    .selectedCategory("Thu")
+    .chartType(ChartTypes.PIE)
     .build();
 
   const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
-  console.dir(highchartsResponse.chartConfig, { depth: null, colors: true });
+  const config = highchartsResponse.chartConfig;
+  // const configStringify = JSON.stringify(config);
+  console.dir(config, { depth: null, colors: true });
   // expect(highchartsResponse.chartType).toBe("column");
+
+  // console.log(JSON.stringify(config))
+
 });
