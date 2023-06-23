@@ -9,17 +9,20 @@ import Series from "../models/Series";
 import AbstractChart from "./AbstractChart";
 import { IChart } from "./IChart";
 
-export default class LineChart implements IChart {
+export default class LineChart extends AbstractChart implements IChart {
   public chartSettings: {} = {};
 
   constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
+    super();
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
     let chartSettings = {};
     this.highchartsFormatter.init(chartSettings, chartData);
 
-    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList
+      .map((oneSeries) => this.getSeriesDataBarCol(oneSeries))
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     chartSettings = {
       ...chartSettings,
@@ -39,7 +42,7 @@ export default class LineChart implements IChart {
       .build();
   };
 
-  private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
+  private getSeriesDataLine(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
     return {
       name: oneSeries.name,
       data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))

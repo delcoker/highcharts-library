@@ -9,7 +9,7 @@ export default class ChartTypes implements IBaseEnumTypes<ChartTypes> {
   public static AREA = new ChartTypes("area", "Area", "area", i++);
   public static SPLINE = new ChartTypes("spline", "Spline", "spline", i++);
   public static AREASPLINE = new ChartTypes("areaspline", "Area Spline", "areaspline", i++);
-  public static PIE = new ChartTypes("pie", "pie", "pie", i++);
+  public static PIE = new ChartTypes("pie", "Pie", "pie", i++);
   public static SEMI_CIRCLE_DONUT = new ChartTypes("semi_circle_donut", "Semi Circle Donut", "semi circle donut", i++);
   public static STACKED_COLUMN = new ChartTypes("stacked_column", "Stacked Chart", "column", i++);
   public static STACKED_PERCENTAGE_COLUMN = new ChartTypes("stacked_percentage_column", "Stacked Percentage Column", "column", i++);

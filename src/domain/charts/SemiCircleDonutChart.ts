@@ -16,16 +16,17 @@ export default class SemiCircleDonutChart implements IChart {
 
   public static getSemiCircleDonutSeries(
     chartParameters: HighchartsRequest,
-    SemiCircleDonutSeries: (string | number )[][]
+    SemiCircleDonutSeries: (string | number | null)[][]
   ) {
     return {
       name: chartParameters.selectedCategory,
       data: SemiCircleDonutSeries
     };
   }
-  public static getHighchartsSemiCircleDonutDataPoint(seriesList: Series[]): (string | number)[] {
+
+  public static getHighchartsSemiCircleDonutDataPoint(seriesList: Series[]): (string | number | null)[] {
     const name = seriesList[0].name;
-    const y = seriesList[0].values[0].y ?? 0;
+    const y = seriesList[0].values[0].y ?? null;
 
     return [name, y];
   }
@@ -35,9 +36,16 @@ export default class SemiCircleDonutChart implements IChart {
 
     const semiCircleDonutSeries = chartData.seriesList
       .map((oneSeries) => AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory))
-      .map((oneCategorySeries) => SemiCircleDonutChart.getHighchartsSemiCircleDonutDataPoint(oneCategorySeries));
+      .map((oneCategorySeries) => SemiCircleDonutChart.getHighchartsSemiCircleDonutDataPoint(oneCategorySeries))
+      .filter((dataPoint) => dataPoint[1] !== null)
+      .sort((a, b) => {
+        if (typeof a[1] === "number" && typeof b[1] === "number") {
+          return b[1] - a[1];
+        }
+        return 0;
+      });
 
-    const series = SemiCircleDonutChart.getSemiCircleDonutSeries(chartParameters, semiCircleDonutSeries);
+    const series: { data: (string | number | null)[][]; name: string } = SemiCircleDonutChart.getSemiCircleDonutSeries(chartParameters, semiCircleDonutSeries);
 
     this.chartSettings = {
       ...this.chartSettings,
@@ -83,7 +91,7 @@ export default class SemiCircleDonutChart implements IChart {
     };
 
     return Builder<HighchartsResponse>()
-      .chartType(ChartTypes.PIE.label)
+      .chartType(ChartTypes.SEMI_CIRCLE_DONUT.label)
       .selectedCategory(chartParameters.selectedCategory)
       .chartConfig(this.chartSettings)
       .build();

@@ -43,7 +43,7 @@ export default class PieChart implements IChart {
     this.highchartsFormatter.init(this.chartSettings, chartData);
 
     const pieSeries = chartData.seriesList
-      .filter((series) => series.values.some((dataPoint) => dataPoint.category.label === chartParameters.selectedCategory))
+      // .filter((series) => series.values.some((dataPoint) => dataPoint.category.label === chartParameters.selectedCategory))
       .map((oneSeries) => AbstractChart.getSingleSelectedCategoryDataPointFromSeries(oneSeries, chartParameters.selectedCategory))
       .map((oneCategorySeries) => PieChart.getHighchartsDataPoint(oneCategorySeries));
 

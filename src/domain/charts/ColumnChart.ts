@@ -6,19 +6,24 @@ import ChartData from "../models/ChartData";
 import Series from "../models/Series";
 import { IChart } from "./IChart";
 import IHighchartsFormatter from "../formatters/IHighchartsFormatter";
+import AbstractChart from "./AbstractChart";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
 
-export default class ColumnChart implements IChart {
+export default class ColumnChart extends AbstractChart implements IChart {
   public readonly highchartsFormatter: IHighchartsFormatter;
   public chartSettings: {} = {};
 
   constructor(highchartsFormatter: IHighchartsFormatter) {
+    super();
     this.highchartsFormatter = highchartsFormatter;
   }
 
   public getChart = (chartData: ChartData, chartParameters: HighchartsRequest): HighchartsResponse => {
     this.highchartsFormatter.init(this.chartSettings, chartData);
 
-    const series = chartData.seriesList.map((oneSeries) => this.getSeriesData(oneSeries));
+    const series = chartData.seriesList
+      .map((oneSeries) => this.getSeriesDataBarCol(oneSeries))
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     this.chartSettings = {
       ...this.chartSettings,
@@ -39,18 +44,5 @@ export default class ColumnChart implements IChart {
       .build();
   };
 
-  // private getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
-  //   return {
-  //     name: oneSeries.name,
-  //     data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
-  //   };
-  // }
 
-  private getSeriesData(oneSeries: Series): { data: (number | null | undefined)[]; name: string } {
-    return {
-      name: oneSeries.name,
-      data: oneSeries.values.map((dataPoint) => dataPoint.y)
-
-    };
-  }
 }

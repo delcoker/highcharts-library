@@ -21,7 +21,12 @@ export default class HighchartsFormatterImpl implements IHighchartsFormatter {
     chartSettings.title = { text: chartData.title };
     chartSettings.exporting = { enabled: true };
     chartSettings.colors = chartData.colours.length > 0 ? chartData.colours : COLOUR_CODES;
-    chartSettings.legend = { enabled: true };
+    chartSettings.legend = {
+      enabled: true,
+      // sort: function(a: { name: string; }, b: { name: any; }) {
+      //   return a.name.localeCompare(b.name);
+      // }
+    };
     chartSettings.plotOptions = {
       series: {
         dataLabels: { enabled: true }

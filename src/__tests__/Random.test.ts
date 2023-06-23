@@ -27,13 +27,13 @@ test("Test chart data", () => {
   expect(highchartsResponse.chartConfig.series).toStrictEqual([{
       data: [
         { name: "Canada", y: 190.985 },
-        { name: "Germany", "y": 3.7777 },
-        { "name": "Sierra Leone", "y": 66.098 }]
+        { "name": "Sierra Leone", "y": 66.098 },
+        { name: "Germany", "y": 3.7777 }]
     }]
   );
 });
 
-test("MANUAL Test chart data for JSFIDDLE", () => {
+test("Test Chart Type works", () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
   const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
 
@@ -45,10 +45,106 @@ test("MANUAL Test chart data for JSFIDDLE", () => {
     .build();
 
   const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
-  // console.dir(highchartsResponse, { depth: null, colors: true });
   expect(highchartsResponse.chartType).toBe("column");
 });
 
+
+test.each([
+  [ChartTypes.SEMI_CIRCLE_DONUT],
+  // [ChartTypes.PIE], // fixme data type is not the same
+  // Add more chart types
+])("TEST PIE & SEMI CIRCLE DONUT SORT", (chartType) => {
+  const highchartsFormatter = new HighchartsFormatterImpl();
+  const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
+
+  const chartData: ChartData = getChartDataFromFile();
+  const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
+    .chartData(chartData)
+    .selectedCategory("Fri")
+    .chartType(chartType)
+    .build();
+
+  const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
+  const config = highchartsResponse.chartConfig;
+  expect(highchartsResponse.chartType).toBe(chartType.label);
+  expect(config.series[0].data).toStrictEqual([
+
+          ["Scoop of rice", 132],
+          ["Just tilapia", 99],
+          ["Fries & chicken", 83],
+          ["Portion baked beans", 66],
+          ["Rice & fish", 43],
+          ["Aix lunch", 20],
+          ["4.5 biscuits", 20],
+          ["9.0 biscuit", 15],
+          ["15% service fee", 15],
+          ["Apple pear", 11]
+        ]
+  );
+});
+
+
+
+test.each([
+  [ChartTypes.AREA],
+  [ChartTypes.LINE],
+  [ChartTypes.COLUMN],
+  [ChartTypes.BAR],
+  [ChartTypes.AREASPLINE],
+  // Add more chart types
+])("Ungrouped chart series is sorted using AbstractChart", (chartType) => {
+  const highchartsFormatter = new HighchartsFormatterImpl();
+  const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
+
+  const chartData: ChartData = getChartDataFromFile();
+  const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
+    .chartData(chartData)
+    .selectedCategory("Doesn't Matter")
+    .chartType(chartType)
+    .build();
+
+  const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
+  const config = highchartsResponse.chartConfig;
+  expect(highchartsResponse.chartType).toBe(chartType.label);
+  expect(config.series).toStrictEqual([
+      { name: "15% service fee", data: [15, 67, null, 11] },
+      { name: "4.5 biscuits", data: [20, 106, 54, 15] },
+      { name: "9.0 biscuit", data: [15, 87, 45, 130] },
+      { name: "Aix lunch", data: [20, 35, null, null] },
+      { name: "Americana", data: [null, null, null, 21] },
+      { name: "Apple", data: [null, 62, null, 32] },
+      { name: "Apple pear", data: [11, 45, null, null] },
+      { name: "Assorted cookies", data: [null, 54, null, null] },
+      { name: "Assorted pastry", data: [null, 55, null, 9] },
+      { name: "Avocado slice", data: [null, 45, 78, null] },
+      { name: "Baguette", data: [null, null, null, 15] },
+      { name: "Baked beans", data: [null, 77, null, null] },
+      { name: "Banana", data: [null, null, null, 44] },
+      { name: "Bb cocktail", data: [null, null, null, 41] },
+      { name: "Beef only", data: [null, null, 33, null] },
+      { name: "Beef sausage", data: [null, 55, null, null] },
+      { name: "Beef saute", data: [null, 99, null, 21] },
+      { name: "Bel malt", data: [null, null, 56, 200] },
+      { name: "Big bottle water", data: [null, null, null, 20] },
+      { name: "Big hollandia", data: [null, null, 22, null] },
+      { name: "Boiled eggs/omelette", data: [null, null, 65, null] },
+      { name: "Boss baker", data: [null, null, 35, null] },
+      { name: "Bread roll", data: [null, null, 45, null] },
+      { name: "Brewed coffee", data: [null, null, 23, null] },
+      { name: "Can bel cola", data: [null, null, 12, null] },
+      { name: "Can drink", data: [null, null, 21, null] },
+      { name: "Carb & fish", data: [null, null, 88, null] },
+      { name: "Carb & sausage", data: [null, null, 10, null] },
+      { name: "Carnation milk", data: [null, null, 11, null] },
+      { name: "Cerelac", data: [null, null, 14, null] },
+      { name: "Fries & chicken", data: [83, null, null, null] },
+      { name: "Just tilapia", data: [99, null, null, null] },
+      { name: "Portion baked beans", data: [66, null, null, null] },
+      { name: "Rice & fish", data: [43, null, null, null] },
+      { name: "Scoop of rice", data: [132, null, null, null] }
+    ]
+  );
+});
 
 test("TEST AKORNO FILE DATA", () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
@@ -57,8 +153,8 @@ test("TEST AKORNO FILE DATA", () => {
   const chartData: ChartData = getChartDataFromFile();
   const highchartsRequest: HighchartsRequest = Builder(HighchartsRequest)
     .chartData(chartData)
-    .selectedCategory("Thu")
-    .chartType(ChartTypes.PIE)
+    .selectedCategory("444")
+    .chartType(ChartTypes.COLUMN)
     .build();
 
   const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);

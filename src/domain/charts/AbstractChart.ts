@@ -2,9 +2,10 @@ import { Builder } from "builder-pattern";
 import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
 import DataPoint from "../models/DataPoint";
 import Series from "../models/Series";
+import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";
 
 export default abstract class AbstractChart {
-  protected constructor(private readonly highchartsFormatter: HighchartsFormatterImpl) {
+  protected constructor() {
 
   }
 
@@ -50,5 +51,21 @@ export default abstract class AbstractChart {
 
     return oneSeriesListForCategory;
 
+  }
+
+  protected getSeriesData(oneSeries: Series): { name: string; data: HighchartsDataPoint[] } {
+    return {
+      name: oneSeries.name,
+      data: oneSeries.values.map((dataPoint) => AbstractChart.getHighchartsDataPoint(dataPoint))
+    };
+  }
+
+
+  protected getSeriesDataBarCol(oneSeries: Series): { data: (number | null | undefined)[]; name: string } {
+    return {
+      name: oneSeries.name,
+      data: oneSeries.values.map((dataPoint) => dataPoint.y)
+
+    };
   }
 }
