@@ -5,6 +5,8 @@ import ChartData from "../domain/models/ChartData";
 import HighchartsRequest from "../application/models/HighchartsRequest";
 import { Builder } from "builder-pattern";
 import ChartTypes from "../domain/enums/ChartTypes";
+import ChatGPTServiceImpl from "../domain/services/ChatGPTServiceImpl";
+import ChatGPTRepositoryImpl from "../infrastructure/repositories/ChatGPTRepositoryImpl.";
 
 test("My Greeter", () => {
   expect(greeter("Del")).toBe("Hello Del");
@@ -50,7 +52,7 @@ test("Test Chart Type works", () => {
 
 
 test.each([
-  [ChartTypes.SEMI_CIRCLE_DONUT],
+  [ChartTypes.SEMI_CIRCLE_DONUT]
   // [ChartTypes.PIE], // fixme data type is not the same
   // Add more chart types
 ])("TEST PIE & SEMI CIRCLE DONUT SORT", (chartType) => {
@@ -69,20 +71,19 @@ test.each([
   expect(highchartsResponse.chartType).toBe(chartType.label);
   expect(config.series[0].data).toStrictEqual([
 
-          ["Scoop of rice", 132],
-          ["Just tilapia", 99],
-          ["Fries & chicken", 83],
-          ["Portion baked beans", 66],
-          ["Rice & fish", 43],
-          ["Aix lunch", 20],
-          ["4.5 biscuits", 20],
-          ["9.0 biscuit", 15],
-          ["15% service fee", 15],
-          ["Apple pear", 11]
-        ]
+      ["Scoop of rice", 132],
+      ["Just tilapia", 99],
+      ["Fries & chicken", 83],
+      ["Portion baked beans", 66],
+      ["Rice & fish", 43],
+      ["Aix lunch", 20],
+      ["4.5 biscuits", 20],
+      ["9.0 biscuit", 15],
+      ["15% service fee", 15],
+      ["Apple pear", 11]
+    ]
   );
 });
-
 
 
 test.each([
@@ -90,7 +91,7 @@ test.each([
   [ChartTypes.LINE],
   [ChartTypes.COLUMN],
   [ChartTypes.BAR],
-  [ChartTypes.AREASPLINE],
+  [ChartTypes.AREASPLINE]
   // Add more chart types
 ])("Ungrouped chart series is sorted using AbstractChart", (chartType) => {
   const highchartsFormatter = new HighchartsFormatterImpl();
@@ -146,7 +147,7 @@ test.each([
   );
 });
 
-test("TEST AKORNO FILE DATA", () => {
+test("TEST AKORNO FILE DATA", async () => {
   const highchartsFormatter = new HighchartsFormatterImpl();
   const highchartsFactory = new HighchartsFactoryImpl(highchartsFormatter);
 
@@ -160,9 +161,18 @@ test("TEST AKORNO FILE DATA", () => {
   const highchartsResponse = highchartsFactory.getChart(chartData, highchartsRequest);
   const config = highchartsResponse.chartConfig;
   // const configStringify = JSON.stringify(config);
-  console.dir(config, { depth: null, colors: true });
+  // console.dir(config, { depth: null, colors: true });
   // expect(highchartsResponse.chartType).toBe("column");
 
   // console.log(JSON.stringify(config))
 
-});
+  const chatGPTService = new ChatGPTServiceImpl(new ChatGPTRepositoryImpl());
+
+  const analysis = await chatGPTService.getAnalysis(config.series)
+    .then(analysis => console.log(analysis))
+    .catch(error => console.error("Error:", error));
+
+  console.log(analysis);
+
+
+}, 10000);
