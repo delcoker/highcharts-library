@@ -1,5 +1,4 @@
 import { Builder } from "builder-pattern";
-import HighchartsFormatterImpl from "../formatters/HighchartsFormatterImpl";
 import DataPoint from "../models/DataPoint";
 import Series from "../models/Series";
 import HighchartsDataPoint from "../models/highchart/HighchartsDataPoint";

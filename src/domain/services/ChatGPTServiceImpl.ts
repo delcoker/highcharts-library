@@ -10,7 +10,7 @@ export default class ChatGPTServiceImpl implements ChatGPTService {
 
     const data = await this.chatGPTRepository.getCompletion(prompt);
 
-    return data.choices?.[0]?.text || "";
+    return data.choices?.[0]?.message.content || new Error("No content received");
   }
 
 }

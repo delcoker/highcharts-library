@@ -56,6 +56,8 @@
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
     "highcharts": "^11.1.0",
-    "highcharts-library": "^1.0.37"
+    "highcharts-library": "^1.0.37",
+    "npm": "^9.7.2",
+    "openai": "^3.3.0"
   }
 }

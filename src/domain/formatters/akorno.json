@@ -1822,11 +1822,11 @@
   "defaultCategory": "1",
   "unit": {
     "name": "Quantity",
-    "description": null,
+    "description": "Quantity of a particular product sold",
     "axisName": "Quantity Sold",
     "prefix": "",
-    "suffix": "",
-    "decimalPlaces": 2,
+    "suffix": "units",
+    "decimalPlaces": 0,
     "unitType": "DEFAULT"
   },
   "colours": [
