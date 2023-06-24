@@ -1,0 +1,1858 @@
+{
+  "id": "special",
+  "defaultChartType": {
+    "label": "column",
+    "display": "Column",
+    "type": "column",
+    "value": 1
+  },
+  "seriesList": [
+    {
+      "itemId": "Can bel cola",
+      "name": "Can bel cola",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 12
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Baguette",
+      "name": "Baguette",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 15
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Fries & chicken",
+      "name": "Fries & chicken",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 83
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Avocado slice",
+      "name": "Avocado slice",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 45
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 78
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Apple pear",
+      "name": "Apple pear",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 11
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 45
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Carb & sausage",
+      "name": "Carb & sausage",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 10
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Assorted pastry",
+      "name": "Assorted pastry",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 55
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 9
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Aix lunch",
+      "name": "Aix lunch",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 20
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 35
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Can drink",
+      "name": "Can drink",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 21
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "4.5 biscuits",
+      "name": "4.5 biscuits",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 20
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 106
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 54
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 15
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Bel malt",
+      "name": "Bel malt",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 56
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 200
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Rice & fish",
+      "name": "Rice & fish",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 43
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Bread roll",
+      "name": "Bread roll",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 45
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Assorted cookies",
+      "name": "Assorted cookies",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 54
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Beef only",
+      "name": "Beef only",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 33
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Carnation milk",
+      "name": "Carnation milk",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 11
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Portion baked beans",
+      "name": "Portion baked beans",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 66
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Beef saute",
+      "name": "Beef saute",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 99
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 21
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Scoop of rice",
+      "name": "Scoop of rice",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 132
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Boiled eggs/omelette",
+      "name": "Boiled eggs/omelette",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 65
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Big bottle water",
+      "name": "Big bottle water",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 20
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Cerelac",
+      "name": "Cerelac",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 14
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Carb & fish",
+      "name": "Carb & fish",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 88
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Just tilapia",
+      "name": "Just tilapia",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 99
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Banana",
+      "name": "Banana",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 44
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "9.0 biscuit",
+      "name": "9.0 biscuit",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 15
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 87
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 45
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 130
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Brewed coffee",
+      "name": "Brewed coffee",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 23
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Apple",
+      "name": "Apple",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 62
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 32
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Big hollandia",
+      "name": "Big hollandia",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 22
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Beef sausage",
+      "name": "Beef sausage",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 55
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Americana",
+      "name": "Americana",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 21
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Bb cocktail",
+      "name": "Bb cocktail",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 41
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Baked beans",
+      "name": "Baked beans",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 77
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "Boss baker",
+      "name": "Boss baker",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": 35
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": null
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    },
+    {
+      "itemId": "15% service fee",
+      "name": "15% service fee",
+      "description": null,
+      "key": null,
+      "seriesType": {
+        "label": "TOTAL",
+        "value": 1
+      },
+      "values": [
+        {
+          "category": {
+            "label": "Mon",
+            "key": null,
+            "value": 0,
+            "categoryType": "DATE"
+          },
+          "y": 15
+        },
+        {
+          "category": {
+            "label": "Tue",
+            "key": null,
+            "value": 1,
+            "categoryType": "DATE"
+          },
+          "y": 67
+        },
+        {
+          "category": {
+            "label": "Wed",
+            "key": null,
+            "value": 2,
+            "categoryType": "DATE"
+          },
+          "y": null
+        },
+        {
+          "category": {
+            "label": "Thu",
+            "key": null,
+            "value": 3,
+            "categoryType": "DATE"
+          },
+          "y": 11
+        }
+      ],
+      "unit": null,
+      "meta": null,
+      "visible": true
+    }
+  ],
+  "categories": {
+    "Mon": {
+      "label": "Mon",
+      "key": null,
+      "value": 0,
+      "categoryType": "DATE"
+    },
+    "Tue": {
+      "label": "Tue",
+      "key": null,
+      "value": 1,
+      "categoryType": "DATE"
+    },
+    "Wed": {
+      "label": "Wed",
+      "key": null,
+      "value": 2,
+      "categoryType": "DATE"
+    },
+    "Thu": {
+      "label": "Thu",
+      "key": null,
+      "value": 3,
+      "categoryType": "DATE"
+    }
+  },
+  "defaultCategory": "1",
+  "unit": {
+    "name": "Quantity",
+    "description": null,
+    "axisName": "Quantity Sold",
+    "prefix": "",
+    "suffix": "",
+    "decimalPlaces": 2,
+    "unitType": "DEFAULT"
+  },
+  "colours": [
+    "#ff7f0e",
+    "#2ca02c",
+    "#9467bd",
+    "#8c564b",
+    "#2f7ed8",
+    "#0d233a",
+    "#8bbc21",
+    "#910000",
+    "#1aadce",
+    "#492970",
+    "#f28f43",
+    "#77a1e5",
+    "#c42525",
+    "#a6c96a",
+    "black",
+    "#9370DB",
+    "#DAA520",
+    "#FFE4E1",
+    "#5F9EA0",
+    "#228B22",
+    "#FF4500",
+    "#1f77b4",
+    "#d62728"
+  ],
+  "title": "AKORNO CAT. SRV. SALES 7 DAYS TILL TODAY"
+}
